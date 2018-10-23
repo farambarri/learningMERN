@@ -3,9 +3,13 @@ const router = express.Router();
 const Task = require("../models/task");
 
 router.get("/", async (req, res) => {
-  const task = await Task.find();
-  console.log(task);
-  res.send(task);
+  try {
+    const task = await Task.find();
+    console.log(task);
+    res.send(task);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.get("/:id", async (req, res) => {
